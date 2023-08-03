@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import './app.css'
+import Trivia from './components/Trivia';
 
-function App() {
+function App() { 
+  const [questionNumber,setQuestionNumber] =useState(1)
   const moneyPyramid =[
     {id:1,amount:"$ 100"},
     {id:2,amount:"$ 200"},
@@ -20,11 +23,16 @@ function App() {
   ].reverse()
   return (
   <div className="app">
-<div className="main"></div>
+<div className="main">
+  <div className='top'>
+    <div className='timer'>30</div>
+  </div>
+  <div className='bottom'><Trivia/></div>
+</div>
 <div className='side'>
   <ul className='moneyList'>
     {moneyPyramid.map((m)=>(
-    <li className='moneyListItem'>
+    <li className={questionNumber === m.id ? "moneyListItem active" :"moneyListItem" }>
     <span className='moneyListNumber'>{m.id}</span>
     <span className='moneyListAmount'>{m.amount}</span>
   </li>
