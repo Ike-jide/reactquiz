@@ -16,7 +16,7 @@ export default function Trivia({data,
         );
         const handleClick = (a)=>{
             setSelectedAnswer(a)
-            setClassName('answer active')
+            setClassName(a.correct ? "answer correct": "answer wrong")
         } 
     return(
         <div className="trivia">
