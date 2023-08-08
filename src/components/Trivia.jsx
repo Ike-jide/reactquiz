@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 
-export default function Trivia({data,
+
+export default function Trivia({
+    data,
     setQuestionNumber,
     setTimeOut,
     questionNumber}){
@@ -17,10 +19,9 @@ export default function Trivia({data,
         const handleClick = (a)=>{
             setSelectedAnswer(a) 
             setClassName("answer active")
-            setTimeout(()=>{
-                setClassName(a.correct ? "answer correct": "answer wrong")
-            },3000)
-            
+            setTimeout(() => {
+                   setClassName(a.correct ? "answer correct" : "answer wrong");
+                 }, 3000);
         } 
     return(
         <div className="trivia">
