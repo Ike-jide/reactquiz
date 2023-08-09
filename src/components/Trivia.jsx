@@ -21,7 +21,7 @@ export default function Trivia({
             setClassName("answer active")
             setTimeout(() => {
                    setClassName(a.correct ? "answer correct" : "answer wrong");
-                 }, 3000);
+                 }, 30000);
         } 
     return(
         <div className="trivia">
