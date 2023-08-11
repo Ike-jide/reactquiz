@@ -65,7 +65,7 @@ margin: 0 10px 20px 10px;
 .answer.correct{
     animation: correct 3s ease forwards;
 }
-@keyframes correct{
+@keyframes wrong{
     0%,
     22%,
     42%{
@@ -82,7 +82,7 @@ margin: 0 10px 20px 10px;
     }
 
 }
-.answer.correct{
+.answer.wrong{
     animation: wrong 3s ease forwards;
 }
 .question{
