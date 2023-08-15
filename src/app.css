@@ -114,8 +114,7 @@ margin: 0 10px 20px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    align-self: auto;
-    align-content: center;
+   
 }
 
 .moneyList{
@@ -141,4 +140,12 @@ margin: 0 10px 20px 10px;
 .moneyListAmount{
     font-size: 20px;
     font-weight: 300;
+}
+.endText{
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
