@@ -140,6 +140,7 @@ margin: 0 10px 20px 10px;
 .moneyListAmount{
     font-size: 20px;
     font-weight: 300;
+    padding: 10px;
 }
 .endText{
     position: relative;
