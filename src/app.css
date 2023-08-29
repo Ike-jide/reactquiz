@@ -140,7 +140,7 @@ margin: 0 10px 20px 10px;
 .moneyListAmount{
     font-size: 20px;
     font-weight: 300;
-    padding: 10px;
+ 
 }
 .endText{
     position: relative;
@@ -149,15 +149,4 @@ margin: 0 10px 20px 10px;
     top: 0;
     bottom: 0;
     margin: auto;
-    justify-content: center;
-    align-items: center;
-   padding: 10px;
-   padding-left: 10px;
-   padding-top: 10px;
-   padding-bottom: 10px;
-   margin-top: 10px;
-   margin-bottom: 10px;
-   margin-right: auto;
-   margin-left: auto;
-   padding-right: 0;
 }
