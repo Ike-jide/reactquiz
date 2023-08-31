@@ -19,8 +19,9 @@ export default function Trivia({
         const [wrongAnswer] = useSound(loser);
 
         useEffect(()=>{
-            letsPlay()
-        },[letsPlay])
+            letsPlay();
+        }, [letsPlay]);
+        console.log(letsPlay)
         useEffect(()=>{
             setQuestion(data[questionNumber - 1]);
 
@@ -38,10 +39,18 @@ export default function Trivia({
             delay(3000, ()=>setClassName(a.correct ? "answer correct" : "answer wrong"))
             delay(6000, ()=>{
             if (a.correct){
-                setQuestionNumber((prev)=> prev + 1);
-                setSelectedAnswer(null)
+                correctAnswer();
+                delay(1000, ()=>{
+                    setQuestionNumber((prev)=> prev + 1);
+                    setSelectedAnswer(null)
+                })
+               
             } else{
-                setStop(true)
+                wrongAnswer()
+                delay(1000, ()=>{
+                    setStop(true)
+                })
+               
             }
         });
         };
