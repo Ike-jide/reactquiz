@@ -5,8 +5,8 @@ import Timer from './components/Timer';
 
 function App() { 
   const [questionNumber,setQuestionNumber] =useState(1);
-  const [stop,setStop] =useState(false)
-  const [earned,setEarned] =useState("$ 0")
+  const [timeOut,setTimeOut] =useState(false);
+  const [earned,setEarned] =useState("$ 0");
   const data = [
     {
       id: 1,
@@ -101,15 +101,18 @@ function App() {
   return (
   <div className="app">
 <div className="main">
-  {stop ? <h1 className='endText'>You earned :{earned}</h1>:(
+  {timeOut ? <h1 className='endText'>You earned :{earned}</h1>:(
     <>
   <div className='top'>
-    <div className='timer'><Timer setStop={setStop} questionNumber={setQuestionNumber}/></div>
+    <div className='timer'>
+      <Timer 
+      setTimeOut={setTimeOut} 
+      questionNumber={questionNumber}/></div>
   </div>
   <div className='bottom'>
     <Trivia 
     data={data} 
-    setStop={setStop} 
+    setTimeOut={setTimeOut} 
     setQuestionNumber={setQuestionNumber}
     questionNumber={questionNumber}
     />

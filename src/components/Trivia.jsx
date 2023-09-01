@@ -9,7 +9,7 @@ import winner  from "../assets/winner.mp3"
 export default function Trivia({
     data,
     setQuestionNumber,
-    setStop,
+    setTimeOut,
     questionNumber}){
         const [question,setQuestion]= useState(null);
         const [selectedAnswer,setSelectedAnswer]= useState(null);
@@ -29,15 +29,15 @@ export default function Trivia({
         [data,questionNumber]
         );
         const delay = (duration, callback)=> {
-            setTimeout(() => {
+            setTimeOut(() => {
                 callback()
             },duration)
         }
         const handleClick = (a)=>{
             setSelectedAnswer(a) 
             setClassName("answer active");
-            delay(3000, ()=>setClassName(a.correct ? "answer correct" : "answer wrong"))
-            delay(6000, ()=>{
+            delay(3000, ()=>{setClassName(a.correct ? "answer correct" : "answer wrong")})
+            delay(5000, ()=>{
             if (a.correct){
                 correctAnswer();
                 delay(1000, ()=>{
@@ -48,7 +48,7 @@ export default function Trivia({
             } else{
                 wrongAnswer()
                 delay(1000, ()=>{
-                    setStop(true)
+                    setTimeOut(true)
                 })
                
             }
