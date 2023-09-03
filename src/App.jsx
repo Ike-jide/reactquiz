@@ -2,10 +2,12 @@ import { useEffect, useMemo, useState } from 'react';
 import './app.css'
 import Trivia from './components/Trivia';
 import Timer from './components/Timer';
+import Start from './components/Start';
 
 function App() { 
   
   const [questionNumber,setQuestionNumber] =useState(1);
+  const [username,setUsername]=useState(null)
   const [timeOut,setTimeOut] =useState(false);
   const [earned,setEarned] =useState("$ 0");
   const data = [
@@ -100,42 +102,55 @@ function App() {
  setEarned(moneyPyramid.find((m)=>m.id=== questionNumber-1).amount)
   },[moneyPyramid,questionNumber])
   return (
-  <div className="app">
-<div className="main">
-  {timeOut ? <h1 className='endText'>You earned :{earned}</h1>:(
-    <>
-  <div className='top'>
-    <div className='timer'>
-      <Timer 
-      setTimeOut={setTimeOut} 
-      questionNumber={questionNumber}/></div>
-  </div>
-  <div className='bottom'>
-    <Trivia 
-    data={data} 
-    setTimeOut={setTimeOut} 
-    setQuestionNumber={setQuestionNumber}
-    questionNumber={questionNumber}
-    />
-    </div> 
-    </>
+    <div className="app">
+    {!username ? (
+      <Start setUsername={setUsername} />
+    ) : (
+      <>
+        <div className="main">
+          {timeOut ? (
+            <h1 className="endText">You earned: {earned}</h1>
+          ) : (
+            <>
+              <div className="top">
+                <div className="timer">
+                  <Timer
+                    setTimeOut={setTimeOut}
+                    questionNumber={questionNumber}
+                  />
+                </div>
+              </div>
+              <div className="bottom">
+                <Trivia
+                  data={data}
+                  questionNumber={questionNumber}
+                  setQuestionNumber={setQuestionNumber}
+                  setTimeOut={setTimeOut}
+                />
+              </div>
+            </>
+          )}
+        </div>
+        <div className="pyramid">
+          <ul className="moneyList">
+            {moneyPyramid.map((m) => (
+              <li
+                className={
+                  questionNumber === m.id
+                    ? "moneyListItem active"
+                    : "moneyListItem"
+                }
+              >
+                <span className="moneyListItemNumber">{m.id}</span>
+                <span className="moneyListItemAmount">{m.amount}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </>
     )}
- 
-</div>
-<div className='side'>
-  <ul className='moneyList'>
-    {moneyPyramid.map((m)=>(
-    <li className={questionNumber === m.id ? "moneyListItem active" :"moneyListItem" }>
-    <span className='moneyListNumber'>{m.id}</span>
-    <span className='moneyListAmount'>{m.amount}</span>
-  </li>
-    ))}
-    
-    
-  </ul>
-</div>
   </div>
-  );
+);
 }
 
 export default App;
